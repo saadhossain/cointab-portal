@@ -47,20 +47,20 @@ const UsersManagement = () => {
         <div className='cointab-bg'>
             <div className='w-11/12 md:w-10/12 mx-auto mt-2 md:pt-5 min-h-screen md:min-h-[85vh]'>
                 {
-                    users?.length && <h2 className='text-3xl md:text-4xl font-semibold text-primary font-Shantell md:mt-2 text-center'>Users Details</h2>
+                    users?.length && <h2 className='text-2xl md:text-4xl font-semibold text-primary font-Shantell md:mt-2 text-center'>Users Details</h2>
                 }
                 {
-                    loggedInUser && <div className='w-7/12 mx-auto flex justify-end'>
+                    loggedInUser && <div className='w-full md:w-7/12 mx-auto md:flex justify-end'>
                     {/* Expand Add User form on Click */}
                     {
                         expandForm
-                            ? <form onSubmit={handleAddUser} className='flex gap-2 items-center'>
-                                <div className='grid grid-cols-3 gap-2'>
+                            ? <form onSubmit={handleAddUser} className='md:flex gap-2 items-center'>
+                                <div className='grid grid-cols-1 md:grid-cols-3 gap-2'>
                                     <input type='text' name='name' placeholder='Name' className='border-2 border-gray-600 rounded px-2 py-1' />
                                     <input type='email' name='email' placeholder='Email' className='border-2 border-gray-600 rounded px-2 py-1' />
                                     <input type='password' name='password' placeholder='Password' className='border-2 border-gray-600 rounded px-2 py-1' />
                                 </div>
-                                <button type='submit'><TiTick className='h-10 w-10 text-white bg-primary rounded cursor-pointer' /></button>
+                                <button type='submit' className='mt-2 md:mt-0'><TiTick className='h-10 w-10 text-white bg-primary rounded cursor-pointer' /></button>
                             </form>
                             : <button onClick={() => setExpandForm(!false)} className='flex justify-center gap-2 py-2 px-3 rounded bg-primary hover:bg-secondary duration-500 ease-in-out text-white font-Shantell'><AiOutlineUsergroupAdd className='w-6 h-6' /> Add Users</button>
                     }
@@ -75,15 +75,15 @@ const UsersManagement = () => {
                                 users?.some(user => user.email === loggedInUser?.email && user.password === loggedInUser?.password) ?
                                     <>
                                         {/* Tables to Show users Data */}
-                                        <div className="mt-2 text-gray-100">
-                                            <div className="flex justify-center overflow-x-auto">
+                                        <div className="my-5 md:mt-2 text-gray-100">
+                                            <div className="flex md:justify-center overflow-x-auto">
                                                 <table className="text-xs">
                                                     <thead className="bg-primary">
                                                         <tr className="text-left text-base">
-                                                            <th className="px-2 md:px-10 md:py-2">Name</th>
-                                                            <th className="px-2 md:px-10 md:py-2">Email Address</th>
-                                                            <th className="px-2 md:px-10 md:py-2">Password</th>
-                                                            <th className="px-2 md:px-10 md:py-2">Actions</th>
+                                                            <th className="p-2 md:px-10 md:py-2">Name</th>
+                                                            <th className="p-2 md:px-10 md:py-2">Email Address</th>
+                                                            <th className="p-2 md:px-10 md:py-2">Password</th>
+                                                            <th className="p-2 md:px-10 md:py-2">Actions</th>
                                                         </tr>
                                                     </thead>
 

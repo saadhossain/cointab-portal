@@ -18,10 +18,10 @@ const Header = () => {
         <div className='bg-gray-100 border border-gray-200'>
             <div className='w-10/12 mx-auto py-2 flex justify-between items-center'>
                 <Link to='/'><img src={coinTab} alt='Cointab' /></Link>
-                <div className='flex gap-3 font-semibold'>
+                <div className='flex gap-2 md:gap-5 font-semibold'>
                     <NavLink to='/about'>About Us</NavLink>
                     {
-                        loggedInUser ? <button onClick={handleLogout}>Logout</button>: <NavLink to='/'>Login</NavLink>
+                        loggedInUser ? <div className='flex gap-2 md:gap-5 items-center'><NavLink to='/usersmanagement'>Users</NavLink><button onClick={handleLogout}>Logout</button></div>: <NavLink to='/'>Login</NavLink>
                     }
                 </div>
             </div>
