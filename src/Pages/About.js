@@ -1,5 +1,5 @@
 import React from 'react';
-import AboutUs from '../assests/about-us.png';
+import InfoGraphic from '../assests/infographic.png'
 
 const About = () => {
     return (
@@ -12,7 +12,7 @@ const About = () => {
                 </div>
             </div>
             <div className='w-10/12 mx-auto my-5'>
-                <img src={AboutUs} alt="About Us" />
+                <img src={InfoGraphic} alt="About Us" />
             </div>
         </div>
     );
