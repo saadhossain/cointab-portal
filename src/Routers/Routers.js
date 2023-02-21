@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import EditUser from "../Components/EditUser";
 import Main from "../Layout/Main";
 import About from "../Pages/About";
 import Login from "../Pages/Login";
@@ -20,6 +21,11 @@ export const Routers = createBrowserRouter([
             {
                 path: '/usersmanagement',
                 element: <UsersManagement />
+            },
+            {
+                path: '/edituser/:id',
+                loader: ({params}) => fetch(`http://localhost:5000/user/${params.id}`),
+                element: <EditUser/>
             }
         ]
     }

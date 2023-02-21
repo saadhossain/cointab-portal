@@ -47,9 +47,10 @@ const UsersManagement = () => {
         <div className='cointab-bg'>
             <div className='w-11/12 md:w-10/12 mx-auto mt-2 md:pt-5 min-h-screen md:min-h-[85vh]'>
                 {
-                    users?.length && <h2 className='text-3xl md:text-4xl font-semibold text-secondary font-Shantell md:mt-2 text-center'>Users Details</h2>
+                    users?.length && <h2 className='text-3xl md:text-4xl font-semibold text-primary font-Shantell md:mt-2 text-center'>Users Details</h2>
                 }
-                <div className='w-7/12 mx-auto flex justify-end'>
+                {
+                    loggedInUser && <div className='w-7/12 mx-auto flex justify-end'>
                     {/* Expand Add User form on Click */}
                     {
                         expandForm
@@ -64,6 +65,7 @@ const UsersManagement = () => {
                             : <button onClick={() => setExpandForm(!false)} className='flex justify-center gap-2 py-2 px-3 rounded bg-primary hover:bg-secondary duration-500 ease-in-out text-white font-Shantell'><AiOutlineUsergroupAdd className='w-6 h-6' /> Add Users</button>
                     }
                 </div>
+                }
                 {/* If there is user data availbe then render the user data */}
                 {
                     users?.length ?

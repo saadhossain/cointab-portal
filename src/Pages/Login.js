@@ -63,7 +63,7 @@ const Login = () => {
                     <div className="space-y-2">
                         <div>
                             <label htmlFor="email" className="block mb-2 text-sm">Email address</label>
-                            <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="admin@frejun.com" className="w-full px-3 py-2 border rounded-md border-gray-700 text-gray-800" />
+                            <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="admin@admin.com" className="w-full px-3 py-2 border rounded-md border-gray-700 text-gray-800" />
                         </div>
                         <div>
                             <label htmlFor="password" className="text-sm">Password</label>
