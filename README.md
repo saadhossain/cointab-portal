@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Getting Started with CoinTab Portal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Featues of this Portal
 
-In the project directory, you can run:
 
-### `npm start`
+## `Login Page`
+- User Can `login` with Their Registered email and password
+- If user provide Valid email and password, system will allow them and they redirected to the `User Management Page`
+- If a User Provide Wrong Credentials they will see `error`
+- If they provide `Wrong Credentials` at most `5 Times`, system will `block` them for `24 hours`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## `User Management Page`
+- First of all, only Authorized user (if their email and password match with database) can access the `Users Management Page`
+### To Restrict this page from `unauthorized` user I implement `LocalStorage` based Login System
+- If email and password `Match` with our `Database` system will save them to the localStorage, so that we can `Access` and `valided` if the user is `logged In` or not
+- If user is logged in they will see `User Mangement Page` otherwise they will see `You are not authorized` Message.
+- In the Management page I am showing `All Registered User` in a Table, in some colomn `Name`, `Email`, `Password` and 2 `Action Button`
+### `On top` of of Users Table, I have add a `Form`, which is by default `Collapsed` when click on `Add User` button form will `Expand` 
+- There is total `3 (Three)` input field, I could add an extra input for `Confirm Password` but I thought I will make the UI `Messy`
+### Validation while adding new user
+- If someone input a `Email` which is already `Exists` in our database, system will `Not Allow` to add user and Show `Error Message`, that means email should be `Unique`
+- If someone try to `Add User` by `Skipping` any of the `Three` Field system will `Not Allow` to add and `Show Error Message`
+- If User Doesn't `Exists` in our `Database` and all input are provied `System` will create `New User`
+- After Successfully `Created` New user, don't need to `Reload` to see `Updated List`, system will auto `Fetch` the data, this will give Nice `SPA Experience`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## `Delete a Specific User`
+- `Authorized` and `Logged In` user can delete a user from the table on `Users Management Page`
+- For Deleting user have to click on `Delete` icon on the left side of the table
+- When click on delete icon `System` will show and `Confirmation` Popup, and if user select `Yes` system will `Delete` selected user otherwise `Not`
+- As Before after delete No need to `Reload`, cause system will `Refetch` data automatically
 
-### `npm test`
+## `Update a Specific User`
+- When need to `Update` a specific user, logged In user can do it easily but clicking `Update Icon` button
+- If click on `Update Icon` system will redirect to `Update User` Page and Show the Related user
+- Only `Name` and `Password` is updatable, `Email` in the Update page is Readonly.
+#### - If User will try to leave `Name` or `Password` field `Empty` system will `Not Allow` to update and show an `Error Message`
+- If all okay, system will update the user and `Redirect` to `User Magement` Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Thank you
