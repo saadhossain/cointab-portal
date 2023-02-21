@@ -19,25 +19,34 @@ const UsersManagement = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, email, password);
+
+        //If user is already exist then don't create new user and return the function
+        if (users.some(user => user.email === email)) {
+            return toast.error('User Already Exists')
+        }
+        //If name, email and password is empty the throw error and return the function
+        if (!name || !email || !password) {
+            return toast.error("Name, Email or Password Can't be Empty")
+        }
         // Send data to the backend/database
         fetch('http://localhost:5000/users', {
-            method: 'POST', 
+            method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({name, email,password})
+            body: JSON.stringify({ name, email, password })
         })
-        .then(res => res.json())
-        .then(data => {
-            //Show the success message
-            toast.success(data.message)
-            //Reset the form input
-            form.reset()
-            //Collapse the form
-            setExpandForm(false)
-            //Reload/Refetch the data from database
-            refetch()
-        })
+            .then(res => res.json())
+            .then(data => {
+                //Show the success message
+                toast.success(data.message)
+                //Reset the form input
+                form.reset()
+                //Collapse the form
+                setExpandForm(false)
+                //Reload/Refetch the data from database
+                refetch()
+            })
     }
     //Set Loading spninner while loading users data
     if (isLoading) {
@@ -51,20 +60,20 @@ const UsersManagement = () => {
                 }
                 {
                     loggedInUser && <div className='w-full md:w-7/12 mx-auto md:flex justify-end'>
-                    {/* Expand Add User form on Click */}
-                    {
-                        expandForm
-                            ? <form onSubmit={handleAddUser} className='md:flex gap-2 items-center'>
-                                <div className='grid grid-cols-1 md:grid-cols-3 gap-2'>
-                                    <input type='text' name='name' placeholder='Name' className='border-2 border-gray-600 rounded px-2 py-1' />
-                                    <input type='email' name='email' placeholder='Email' className='border-2 border-gray-600 rounded px-2 py-1' />
-                                    <input type='password' name='password' placeholder='Password' className='border-2 border-gray-600 rounded px-2 py-1' />
-                                </div>
-                                <button type='submit' className='mt-2 md:mt-0'><TiTick className='h-10 w-10 text-white bg-primary rounded cursor-pointer' /></button>
-                            </form>
-                            : <button onClick={() => setExpandForm(!false)} className='flex justify-center gap-2 py-2 px-3 rounded bg-primary hover:bg-secondary duration-500 ease-in-out text-white font-Shantell'><AiOutlineUsergroupAdd className='w-6 h-6' /> Add Users</button>
-                    }
-                </div>
+                        {/* Expand Add User form on Click */}
+                        {
+                            expandForm
+                                ? <form onSubmit={handleAddUser} className='md:flex gap-2 items-center'>
+                                    <div className='grid grid-cols-1 md:grid-cols-3 gap-2'>
+                                        <input type='text' name='name' placeholder='Name' className='border-2 border-gray-600 rounded px-2 py-1' />
+                                        <input type='email' name='email' placeholder='Email' className='border-2 border-gray-600 rounded px-2 py-1' />
+                                        <input type='password' name='password' placeholder='Password' className='border-2 border-gray-600 rounded px-2 py-1' />
+                                    </div>
+                                    <button type='submit' className='mt-2 md:mt-0'><TiTick className='h-10 w-10 text-white bg-primary rounded cursor-pointer' /></button>
+                                </form>
+                                : <button onClick={() => setExpandForm(!false)} className='flex justify-center gap-2 py-2 px-3 rounded bg-primary hover:bg-secondary duration-500 ease-in-out text-white font-Shantell'><AiOutlineUsergroupAdd className='w-6 h-6' /> Add Users</button>
+                        }
+                    </div>
                 }
                 {/* If there is user data availbe then render the user data */}
                 {
