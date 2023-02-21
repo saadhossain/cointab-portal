@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { UtilityContext } from '../Context/UtilityProvider';
 import Processing from './Loader/Processing';
 
 const EditUser = () => {
-    const { loading, setLoading } = useContext(UtilityContext)
+    //Get loading and setloading from the utility context
+    const { loading, setLoading, refetch } = useContext(UtilityContext)
     const { id, name, email, password } = useLoaderData().data[0]
+    //Get the use navigate hook from react router
+    const navigate = useNavigate()
     const handleUpdateUser = (e) => {
         e.preventDefault()
         setLoading(true)
@@ -25,6 +28,9 @@ const EditUser = () => {
                 .then(data => {
                     toast.success(data.message)
                     setLoading(false)
+                    //Refetch the users data from the database
+                    refetch()
+                    navigate('/usersmanagement')
                 })
                 .catch(err => console.error(err))
         }
